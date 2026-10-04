@@ -1,0 +1,113 @@
+{
+  "schema": "altslot/review-v1",
+  "sourceSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+  "records": [
+    {
+      "key": "5a68c9c8d07cf57508eac5bc59213edfcf914d25b40e68902813a99f92ea4a65",
+      "sourceSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+      "part": "word/header1.xml",
+      "path": "0/2/0/0/1",
+      "originalAttributes": [
+        [
+          "{}descr",
+          "Header symbol"
+        ],
+        [
+          "{}id",
+          "1"
+        ],
+        [
+          "{}name",
+          "Shared header icon"
+        ]
+      ],
+      "mediaSha256": "00aa1248b9da3d40d2b5fa8acb00427888f06945d411a5cc3236a16d34c89b6b",
+      "original": {
+        "descr": "Header symbol",
+        "title": null
+      },
+      "edit": {
+        "descr": {
+          "action": "set",
+          "value": "Shared report context symbol"
+        },
+        "title": {
+          "action": "set",
+          "value": "Shared header"
+        }
+      }
+    },
+    {
+      "key": "3f874f65a92fca491035f743fc072b8fc56b4f1bc91eb0c956c58015b0ed2f34",
+      "sourceSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+      "part": "word/document.xml",
+      "path": "0/7/1/0/0/5",
+      "originalAttributes": [
+        [
+          "{}id",
+          "3"
+        ],
+        [
+          "{}name",
+          "Floating summary icon"
+        ],
+        [
+          "{}title",
+          "Floating marker"
+        ]
+      ],
+      "mediaSha256": "00aa1248b9da3d40d2b5fa8acb00427888f06945d411a5cc3236a16d34c89b6b",
+      "original": {
+        "descr": null,
+        "title": "Floating marker"
+      },
+      "edit": {
+        "descr": {
+          "action": "set",
+          "value": "Summary marker showing the review checkpoint"
+        },
+        "title": {
+          "action": "remove"
+        }
+      }
+    },
+    {
+      "key": "6cc960b39c31b61fa6cf5b12546c79c5dd03a26be7afb113d8400bc46f7afa37",
+      "sourceSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+      "part": "word/document.xml",
+      "path": "0/5/1/0/0/1",
+      "originalAttributes": [
+        [
+          "{}descr",
+          "Status icon"
+        ],
+        [
+          "{}id",
+          "2"
+        ],
+        [
+          "{}name",
+          "Release icon"
+        ],
+        [
+          "{}title",
+          "Status"
+        ]
+      ],
+      "mediaSha256": "00aa1248b9da3d40d2b5fa8acb00427888f06945d411a5cc3236a16d34c89b6b",
+      "original": {
+        "descr": "Status icon",
+        "title": "Status"
+      },
+      "edit": {
+        "descr": {
+          "action": "set",
+          "value": "Release checkpoint ready for review"
+        },
+        "title": {
+          "action": "keep"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "project": "AltSlot",
+  "date": "2026-10-04",
+  "functionalCommit": "477beeaa7397de178acbc68729ff658ffa46a3d8",
+  "run": {
+    "id": 37185453748,
+    "url": "https://github.com/Masanori-Spec/alt-slot/actions/runs/37185453748",
+    "conclusion": "success"
+  },
+  "environment": {
+    "runner": "ubuntu-22.04",
+    "node": [
+      22,
+      24
+    ],
+    "python": "3.12",
+    "playwright": "1.56.0",
+    "chromiumSandbox": true,
+    "basePath": "/alt-slot/",
+    "openXmlSdk": "3.3.0",
+    "dotnet": "8.0",
+    "sdkFileFormat": "Office2019"
+  },
+  "jobs": [
+    {
+      "id": 111386305582,
+      "name": "engine (24)",
+      "conclusion": "success"
+    },
+    {
+      "id": 111386305708,
+      "name": "engine (22)",
+      "conclusion": "success"
+    },
+    {
+      "id": 111386305809,
+      "name": "browser",
+      "conclusion": "success"
+    },
+    {
+      "id": 111386460021,
+      "name": "document",
+      "conclusion": "success"
+    }
+  ],
+  "checks": {
+    "testsPassedPerEngine": 48,
+    "failed": 0,
+    "skipped": 0,
+    "independentReviewCases": 13,
+    "independentPythonSelectiveBatches": 64,
+    "unlistedEditNegativeControlRejected": true,
+    "browserScenariosPassed": 14,
+    "sdkDocumentsValidated": 4,
+    "sdkValidationErrors": 0,
+    "sdkOperationalFailures": 0,
+    "sdkReadOnlyBytesUnchanged": true
+  },
+  "inspection": {
+    "browserScreenshots": 8,
+    "workspacePrintPages": 1,
+    "exportedReportPrintPages": 1,
+    "emittedDocxPages": 2,
+    "browserDocxPages": 2,
+    "hostedDocxRenderPairsIdentical": true,
+    "browserDownloadedPacketReceiptDocxHashesBound": true,
+    "browserDownloadedIndependentOraclePassed": true,
+    "bundledRendererAlsoCompared": true
+  },
+  "artifacts": [
+    {
+      "id": 11297022101,
+      "name": "altslot-document-evidence",
+      "bytes": 469063,
+      "sha256": "c0f171b7758aa38e784ea7379597fd92e3fba42c0af89a8e1ea2025b2848c3df"
+    },
+    {
+      "id": 11296543396,
+      "name": "altslot-browser-evidence",
+      "bytes": 1537167,
+      "sha256": "9b790bf2c5008a4566ddca430325fc9973b239bb22ac622ce70c9c47fa24f572"
+    }
+  ],
+  "limits": [
+    "Synthetic supported benchmark; no native Microsoft Word, screen reader, reading order or accessibility conformance validation",
+    "Open XML SDK is a supplemental structural check, not universal document compatibility or semantic description validation",
+    "Pixel equality compares each source/output pair in one renderer, not equality across renderers",
+    "No public website deployment; no project license grant"
+  ]
+}

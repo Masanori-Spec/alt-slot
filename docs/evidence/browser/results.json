@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "sandboxEnabled": true,
+  "base": "http://127.0.0.1:4173/alt-slot/",
+  "scenarios": [
+    {
+      "name": "Japanese entry, keyboard navigation, English locale and local sample under subpath",
+      "status": "passed"
+    },
+    {
+      "name": "Five exact occurrences distinguish repeated image bytes and shared stories",
+      "status": "passed"
+    },
+    {
+      "name": "Independent repeated sibling edits do not change its neighbor",
+      "status": "passed"
+    },
+    {
+      "name": "Reordered subset return retains omitted occurrences",
+      "status": "passed"
+    },
+    {
+      "name": "Build outputs preserve exact literal changes with independent Python verification",
+      "status": "passed"
+    },
+    {
+      "name": "Actual downloaded HTML report is inert and retained with screen and A4 print evidence",
+      "status": "passed"
+    },
+    {
+      "name": "Edits invalidate outputs and empty set differs from remove",
+      "status": "passed"
+    },
+    {
+      "name": "Changed-file packet, identity tampering and duplicate record reject without replacing review",
+      "status": "passed"
+    },
+    {
+      "name": "Malformed UTF-8 review import rejects and cancelled delayed import cannot commit",
+      "status": "passed"
+    },
+    {
+      "name": "Cancelled source import retains current review and malformed file cannot replace it",
+      "status": "passed"
+    },
+    {
+      "name": "UTF-8 byte budget blocks oversized multilingual value without stale download",
+      "status": "passed"
+    },
+    {
+      "name": "Excluded image types are visible, uneditable and isolated",
+      "status": "passed"
+    },
+    {
+      "name": "Japanese mobile390px retains labels and fits document width",
+      "status": "passed"
+    },
+    {
+      "name": "No-op output is byte-identical and review reload is explicit",
+      "status": "passed"
+    }
+  ]
+}

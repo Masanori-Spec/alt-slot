@@ -2,6 +2,10 @@
 
 **同じ画像でも、意味はその場所にある。**
 
+![AltSlot exact-occurrence editor captured in Chromium](docs/evidence/browser/desktop-edit-en.png)
+
+Actual tested interface. [Japanese mobile](docs/evidence/browser/mobile-edit-ja.png) · [Selective return review](docs/evidence/browser/desktop-return-en.png)
+
 AltSlot is a local DOCX image-metadata review workbench. It exports editable description/title records for exact drawing occurrences, accepts reordered or selective returns, and patches only the chosen `wp:docPr` attributes in the exact original file.
 
 Repeated image bytes, repeated descriptions and blank descriptions stay distinct. A shared header is one stored occurrence even when an application displays it on several pages. Reviewers decide the wording; AltSlot does not generate descriptions or claim accessibility conformance.
@@ -47,7 +51,9 @@ node scripts/emit_example.mjs
 
 The final local aggregate passed 48 tests, including 13 independent reviewer cases. The suite covers byte ownership, packet identities, duplicate JSON keys, bounded XML/ZIP processing, exact attribute edits, no-op identity and actual interrupted UI handlers. Independent Python `zipfile`, ElementTree and Expat compare literal expected metadata and unchanged member/XML bytes. The emitted reviewed DOCX has also been rendered through LibreOffice and its two pages are pixel-identical to the source.
 
-The sandboxed Chromium suite, GitHub Actions workflow and pinned Open XML SDK validator are **authored but unrun at this freeze**. No native Word, screen-reader, accessibility-compliance or broad real-world-document compatibility pass is claimed. [Verification details](docs/VERIFICATION.md).
+The [verified hosted run](https://github.com/Masanori-Spec/alt-slot/actions/runs/37185453748) passed both Node 22/24 engines, all **14 sandboxed Chromium scenarios**, and the document job. **Open XML SDK 3.3.0 validated four DOCX files with zero errors**: the source, emitted edited output, actual browser-downloaded edited output and no-op download. Both edited outputs retain the source's two-page rendering exactly within each LibreOffice comparison.
+
+Eight actual browser screenshots, both one-page browser print outputs and DOCX render evidence were inspected. The exact downloaded review packet, receipt and DOCX are retained together. No native Word, screen-reader, accessibility-conformance or broad real-world-document compatibility pass is claimed. [Verification details](docs/VERIFICATION.md) · [Visual and document review](docs/VISUAL_REVIEW.md).
 
 ## Engineering notes
 

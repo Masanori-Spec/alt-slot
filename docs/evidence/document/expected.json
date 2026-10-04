@@ -1,0 +1,26 @@
+[
+  {
+    "part": "word/document.xml",
+    "path": "0/5/1/0/0/1",
+    "after": {
+      "descr": "Release checkpoint ready for review",
+      "title": "Status"
+    }
+  },
+  {
+    "part": "word/document.xml",
+    "path": "0/7/1/0/0/5",
+    "after": {
+      "descr": "Summary marker showing the review checkpoint",
+      "title": null
+    }
+  },
+  {
+    "part": "word/header1.xml",
+    "path": "0/2/0/0/1",
+    "after": {
+      "descr": "Shared report context symbol",
+      "title": "Shared header"
+    }
+  }
+]

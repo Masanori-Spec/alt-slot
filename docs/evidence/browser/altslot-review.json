@@ -1,0 +1,119 @@
+{
+  "schema": "altslot/review-v1",
+  "sourceSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+  "records": [
+    {
+      "key": "4aab5519e1292af48bd33c78cacf664fe9e9c9cc1320cd0ed7bf29642014cf6a",
+      "sourceSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+      "part": "word/document.xml",
+      "path": "0/3/1/0/0/1",
+      "originalAttributes": [
+        [
+          "{}descr",
+          "Status icon"
+        ],
+        [
+          "{}id",
+          "1"
+        ],
+        [
+          "{}name",
+          "Intake icon"
+        ],
+        [
+          "{}title",
+          "Status"
+        ]
+      ],
+      "mediaSha256": "00aa1248b9da3d40d2b5fa8acb00427888f06945d411a5cc3236a16d34c89b6b",
+      "original": {
+        "descr": "Status icon",
+        "title": "Status"
+      },
+      "edit": {
+        "descr": {
+          "action": "set",
+          "value": "Intake ready & checked"
+        },
+        "title": {
+          "action": "keep"
+        }
+      }
+    },
+    {
+      "key": "6cc960b39c31b61fa6cf5b12546c79c5dd03a26be7afb113d8400bc46f7afa37",
+      "sourceSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+      "part": "word/document.xml",
+      "path": "0/5/1/0/0/1",
+      "originalAttributes": [
+        [
+          "{}descr",
+          "Status icon"
+        ],
+        [
+          "{}id",
+          "2"
+        ],
+        [
+          "{}name",
+          "Release icon"
+        ],
+        [
+          "{}title",
+          "Status"
+        ]
+      ],
+      "mediaSha256": "00aa1248b9da3d40d2b5fa8acb00427888f06945d411a5cc3236a16d34c89b6b",
+      "original": {
+        "descr": "Status icon",
+        "title": "Status"
+      },
+      "edit": {
+        "descr": {
+          "action": "set",
+          "value": "Release pending"
+        },
+        "title": {
+          "action": "remove"
+        }
+      }
+    },
+    {
+      "key": "3464dec7f1b4628d1e13e843660c6363998c3f43e7bc219700becc19fa90029b",
+      "sourceSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+      "part": "word/footer1.xml",
+      "path": "0/2/0/0/1",
+      "originalAttributes": [
+        [
+          "{}descr",
+          ""
+        ],
+        [
+          "{}id",
+          "1"
+        ],
+        [
+          "{}name",
+          "Footer icon"
+        ],
+        [
+          "{}title",
+          "Footer badge"
+        ]
+      ],
+      "mediaSha256": "00aa1248b9da3d40d2b5fa8acb00427888f06945d411a5cc3236a16d34c89b6b",
+      "original": {
+        "descr": "",
+        "title": "Footer badge"
+      },
+      "edit": {
+        "descr": {
+          "action": "keep"
+        },
+        "title": {
+          "action": "keep"
+        }
+      }
+    }
+  ]
+}

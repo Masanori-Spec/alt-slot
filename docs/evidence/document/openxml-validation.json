@@ -1,0 +1,53 @@
+{
+  "schema": "altslot/openxml-validation-v1",
+  "ok": true,
+  "package": "DocumentFormat.OpenXml",
+  "packageVersion": "3.3.0",
+  "assemblyVersion": "3.3.0.0",
+  "targetFramework": "net8.0",
+  "fileFormatVersion": "Office2019",
+  "readOnly": true,
+  "documentsValidated": 4,
+  "validationErrorCount": 0,
+  "operationalFailureCount": 0,
+  "nativeWordTested": false,
+  "screenReaderTested": false,
+  "documents": [
+    {
+      "path": "fixtures/bench.docx",
+      "beforeSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+      "afterSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+      "byteIdentical": true,
+      "errorCount": 0,
+      "errors": [],
+      "runError": null
+    },
+    {
+      "path": "tests/artifacts/reviewed.docx",
+      "beforeSha256": "423966230e077be8661bb3ca5d6657e997bbc356fce9d98fed4309c195d3ee52",
+      "afterSha256": "423966230e077be8661bb3ca5d6657e997bbc356fce9d98fed4309c195d3ee52",
+      "byteIdentical": true,
+      "errorCount": 0,
+      "errors": [],
+      "runError": null
+    },
+    {
+      "path": "tests/browser/artifacts/reviewed.docx",
+      "beforeSha256": "5ce34f4a88f1c76173270f7bb8d899c77301d61a7387129d2106f8d45590d3e5",
+      "afterSha256": "5ce34f4a88f1c76173270f7bb8d899c77301d61a7387129d2106f8d45590d3e5",
+      "byteIdentical": true,
+      "errorCount": 0,
+      "errors": [],
+      "runError": null
+    },
+    {
+      "path": "tests/browser/artifacts/noop.docx",
+      "beforeSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+      "afterSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+      "byteIdentical": true,
+      "errorCount": 0,
+      "errors": [],
+      "runError": null
+    }
+  ]
+}

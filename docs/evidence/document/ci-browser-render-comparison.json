@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "label": "browser",
+  "renderer": "LibreOffice + Poppler",
+  "sourceDocxSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+  "reviewedDocxSha256": "5ce34f4a88f1c76173270f7bb8d899c77301d61a7387129d2106f8d45590d3e5",
+  "pages": [
+    {
+      "page": "page-1.png",
+      "sourcePngSha256": "ad961da805c2225d9ae70ea9576b92f33b1ef52493dbe9445d614e64df9e3e1d",
+      "reviewedPngSha256": "ad961da805c2225d9ae70ea9576b92f33b1ef52493dbe9445d614e64df9e3e1d",
+      "identical": true
+    },
+    {
+      "page": "page-2.png",
+      "sourcePngSha256": "0df21fa70b6cfc0e6375f55c3bc4677a12a1a7b03e46dc24efa9f9ce0b6759b9",
+      "reviewedPngSha256": "0df21fa70b6cfc0e6375f55c3bc4677a12a1a7b03e46dc24efa9f9ce0b6759b9",
+      "identical": true
+    }
+  ],
+  "nativeWordTested": false,
+  "screenReaderTested": false
+}

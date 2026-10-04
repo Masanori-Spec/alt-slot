@@ -1,0 +1,164 @@
+{
+  "schema": "altslot/receipt-v1",
+  "engineVersion": "0.1.0",
+  "sourceSha256": "73be1f00904e3bcf26c0e77e060f78088496bebcdeaec247cbfbfb2ad9e3ec66",
+  "outputSha256": "423966230e077be8661bb3ca5d6657e997bbc356fce9d98fed4309c195d3ee52",
+  "packetSha256": "c90fef2564e42f703b0d133d6e60b4d312bd32d665a3e3dbe3bacb8ac16dd877",
+  "selectedRecords": 3,
+  "changedOccurrences": 3,
+  "keptUnlisted": 2,
+  "changedParts": [
+    "word/header1.xml",
+    "word/document.xml"
+  ],
+  "members": [
+    {
+      "part": "[Content_Types].xml",
+      "beforeSha256": "97d116b4e474907af40f63c059c4a4789a3455349de3ac8d6e39d109d09d2375",
+      "afterSha256": "97d116b4e474907af40f63c059c4a4789a3455349de3ac8d6e39d109d09d2375",
+      "changed": false
+    },
+    {
+      "part": "_rels/.rels",
+      "beforeSha256": "a9ae57efe9186f07d48303bcac5d54c7e359bf3f503939c03ad2954e5c59a5c4",
+      "afterSha256": "a9ae57efe9186f07d48303bcac5d54c7e359bf3f503939c03ad2954e5c59a5c4",
+      "changed": false
+    },
+    {
+      "part": "customXml/_rels/item1.xml.rels",
+      "beforeSha256": "1ca6c9a64edcebe24ee703a54403611b322d96da33371779e742d2d3f7ed7a6c",
+      "afterSha256": "1ca6c9a64edcebe24ee703a54403611b322d96da33371779e742d2d3f7ed7a6c",
+      "changed": false
+    },
+    {
+      "part": "customXml/item1.xml",
+      "beforeSha256": "a86086ffc5d8e83ebd6c71a55d1d2efaa31b137977f5f3a752366e1023612144",
+      "afterSha256": "a86086ffc5d8e83ebd6c71a55d1d2efaa31b137977f5f3a752366e1023612144",
+      "changed": false
+    },
+    {
+      "part": "customXml/itemProps1.xml",
+      "beforeSha256": "c542307b13ec29a8b546217bb37936ab4822e044b265d2952985ec3d6afed24e",
+      "afterSha256": "c542307b13ec29a8b546217bb37936ab4822e044b265d2952985ec3d6afed24e",
+      "changed": false
+    },
+    {
+      "part": "customXml/witness.bin",
+      "beforeSha256": "34ce431a7348cef1e520e30edae0ebbf4ad57cb4389c45756f008f07861a38ce",
+      "afterSha256": "34ce431a7348cef1e520e30edae0ebbf4ad57cb4389c45756f008f07861a38ce",
+      "changed": false
+    },
+    {
+      "part": "docProps/app.xml",
+      "beforeSha256": "be664981c3141cddfc59362beb287ebf20d0773660e2dd6faac5968a5930a081",
+      "afterSha256": "be664981c3141cddfc59362beb287ebf20d0773660e2dd6faac5968a5930a081",
+      "changed": false
+    },
+    {
+      "part": "docProps/core.xml",
+      "beforeSha256": "d14be8284e406d14dc2a576b19f15e7f637b955f9e27a3d9ed871ec99606f7ba",
+      "afterSha256": "d14be8284e406d14dc2a576b19f15e7f637b955f9e27a3d9ed871ec99606f7ba",
+      "changed": false
+    },
+    {
+      "part": "docProps/thumbnail.jpeg",
+      "beforeSha256": "96367138dc44ce09bf2c8f0f8e49348a1478d2c5c0af69bbc2bbc38b63cdcead",
+      "afterSha256": "96367138dc44ce09bf2c8f0f8e49348a1478d2c5c0af69bbc2bbc38b63cdcead",
+      "changed": false
+    },
+    {
+      "part": "word/_rels/document.xml.rels",
+      "beforeSha256": "d1a8528495dfb453a3e80b49117bbe375211d2f3f12f51eede39682dc268ef5c",
+      "afterSha256": "d1a8528495dfb453a3e80b49117bbe375211d2f3f12f51eede39682dc268ef5c",
+      "changed": false
+    },
+    {
+      "part": "word/_rels/footer1.xml.rels",
+      "beforeSha256": "a134ffb58bad658becad1362f28a7fcb92904a928e5a686fbae9bed93092e9d8",
+      "afterSha256": "a134ffb58bad658becad1362f28a7fcb92904a928e5a686fbae9bed93092e9d8",
+      "changed": false
+    },
+    {
+      "part": "word/_rels/header1.xml.rels",
+      "beforeSha256": "a134ffb58bad658becad1362f28a7fcb92904a928e5a686fbae9bed93092e9d8",
+      "afterSha256": "a134ffb58bad658becad1362f28a7fcb92904a928e5a686fbae9bed93092e9d8",
+      "changed": false
+    },
+    {
+      "part": "word/document.xml",
+      "beforeSha256": "ba4a6d52ce5904a714ddcab97ebfc7bcebbfc28e6143f8d41453f0ab10eea2e0",
+      "afterSha256": "03d51ae3045125f155b468f09616f520c832512c6259c7d62fa897e344ee28ef",
+      "changed": true
+    },
+    {
+      "part": "word/fontTable.xml",
+      "beforeSha256": "79385fb7f60247507ecaffc292e9ebd52ea0657b8634f629ba6fccc54011d6bb",
+      "afterSha256": "79385fb7f60247507ecaffc292e9ebd52ea0657b8634f629ba6fccc54011d6bb",
+      "changed": false
+    },
+    {
+      "part": "word/footer1.xml",
+      "beforeSha256": "44a9447b480047ff2632a0f1be930d2904497d27556c342f528ab03899243540",
+      "afterSha256": "44a9447b480047ff2632a0f1be930d2904497d27556c342f528ab03899243540",
+      "changed": false
+    },
+    {
+      "part": "word/header1.xml",
+      "beforeSha256": "6f4172528a298e4dea037e6c527b4b1faf4ceb4b78dfba7b2b5ba38dc460b267",
+      "afterSha256": "462ab15b498305744de31a1148ff004d68ca02e82a6826e4aec6cdc60cb58eae",
+      "changed": true
+    },
+    {
+      "part": "word/media/image1.png",
+      "beforeSha256": "00aa1248b9da3d40d2b5fa8acb00427888f06945d411a5cc3236a16d34c89b6b",
+      "afterSha256": "00aa1248b9da3d40d2b5fa8acb00427888f06945d411a5cc3236a16d34c89b6b",
+      "changed": false
+    },
+    {
+      "part": "word/numbering.xml",
+      "beforeSha256": "70976f19cbcd896e51890859fe6ecb3467a5a7ad0c040160fedc5a1993cb09ce",
+      "afterSha256": "70976f19cbcd896e51890859fe6ecb3467a5a7ad0c040160fedc5a1993cb09ce",
+      "changed": false
+    },
+    {
+      "part": "word/settings.xml",
+      "beforeSha256": "51a0d348fe85965c66e4748a03c3c0d055d78455514f03cb121c334af7d73689",
+      "afterSha256": "51a0d348fe85965c66e4748a03c3c0d055d78455514f03cb121c334af7d73689",
+      "changed": false
+    },
+    {
+      "part": "word/styles.xml",
+      "beforeSha256": "66a4da55d522f3d47fbc060587caa3cf787edbe9c7f7efc8f5b5e15433d4c721",
+      "afterSha256": "66a4da55d522f3d47fbc060587caa3cf787edbe9c7f7efc8f5b5e15433d4c721",
+      "changed": false
+    },
+    {
+      "part": "word/stylesWithEffects.xml",
+      "beforeSha256": "463ae0928cf0d84775dbf8cf18d6c3029f6707c81bf590f6d6dd8757a5e93f15",
+      "afterSha256": "463ae0928cf0d84775dbf8cf18d6c3029f6707c81bf590f6d6dd8757a5e93f15",
+      "changed": false
+    },
+    {
+      "part": "word/theme/theme1.xml",
+      "beforeSha256": "e3a8ab7db9ca7afca56f5f2820a56e8b660016c647773555b060b0a02ac76941",
+      "afterSha256": "e3a8ab7db9ca7afca56f5f2820a56e8b660016c647773555b060b0a02ac76941",
+      "changed": false
+    },
+    {
+      "part": "word/webSettings.xml",
+      "beforeSha256": "349d36de7434d09f86987ff671d8814964a0588c1e630c06e562cda7e75e9f95",
+      "afterSha256": "349d36de7434d09f86987ff671d8814964a0588c1e630c06e562cda7e75e9f95",
+      "changed": false
+    }
+  ],
+  "noOpByteIdentical": false,
+  "verification": {
+    "reopened": true,
+    "unaffectedMemberBytesIdentical": true,
+    "mediaBytesIdentical": true,
+    "nativeWordTested": false,
+    "screenReaderTested": false
+  },
+  "exclusions": [],
+  "unscannedParts": []
+}
