@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob:; worker-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>AltSlot · Image metadata review</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main" data-t="skip">作業エリアへ</a>
+    <header>
+      <a class="brand" href="#"
+        >alt<span>slot</span><i aria-hidden="true"></i></a
+      ><span class="header-note" data-t="headerNote"
+        >DOCUMENT TOOLS / 画像の意味を引き継ぐ</span
+      ><label class="language"
+        ><span class="sr" data-t="language">表示言語</span
+        ><select id="language">
+          <option value="ja">日本語</option>
+          <option value="en">English</option>
+        </select></label
+      >
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">01 / DOCUMENT METADATA WORKBENCH</p>
+          <h1 data-t="hero">一枚ずつ、<br />意味を渡す。</h1>
+          <p class="lede" data-t="lede">
+            同じ画像でも、使われる場所で説明は変わる。DOCXの画像を出現箇所ごとに取り出し、レビューした代替テキストだけを戻します。
+          </p>
+          <div class="hero-tags">
+            <span data-t="local">端末内で処理</span
+            ><span data-t="exact">出現箇所と元ファイルを照合</span
+            ><span data-t="selective">選んだ属性だけ更新</span>
+          </div>
+        </div>
+        <aside class="concept" aria-label="Workflow illustration">
+          <div class="paper">
+            <span>DOCX / SOURCE</span>
+            <div class="mini-row">
+              <i>↗</i>
+              <div>
+                <b>01</b><small data-t="illustration1">本文のアイコン</small>
+              </div>
+            </div>
+            <div class="mini-row">
+              <i>↗</i>
+              <div>
+                <b>02</b
+                ><small data-t="illustration2">同じ画像、別の箇所</small>
+              </div>
+            </div>
+          </div>
+          <div class="return-note">
+            <span>REVIEW → RETURN</span
+            ><strong data-t="illustration3"
+              >画像ではなく、<br />その場所の説明へ。</strong
+            ><small>SHA-256 + PART + PATH</small>
+          </div>
+        </aside>
+      </section>
+      <section class="scope">
+        <strong data-t="scopeTitle">小さな変更を、確かめて返す</strong>
+        <p data-t="scope">
+          対象は通常のDrawingML画像の説明・タイトル。画像本体は変えません。文章の適切さ、読み上げ順やアクセシビリティ適合は、人と利用アプリで別途確認してください。
+        </p>
+      </section>
+      <section class="workspace">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">WORKSPACE / SESSION ONLY</p>
+            <h2 id="file-name" data-t="noFile">まず、文書を開く</h2>
+          </div>
+          <div class="toolbar">
+            <button id="open-file" class="primary" data-t="open">
+              DOCXを開く</button
+            ><button id="demo" data-t="demo">例を試す</button
+            ><input id="doc-file" type="file" accept=".docx" hidden /><button
+              id="cancel-work"
+              hidden
+              data-t="cancel"
+            >
+              中止
+            </button>
+          </div>
+        </div>
+        <p id="status" role="status" aria-live="polite"></p>
+        <div class="metrics" id="metrics">
+          <div>
+            <span data-t="eligible">編集できる箇所</span
+            ><strong id="eligible-count">—</strong>
+          </div>
+          <div>
+            <span data-t="excluded">対象外</span
+            ><strong id="excluded-count">—</strong>
+          </div>
+          <div>
+            <span data-t="changed">変更予定</span
+            ><strong id="changed-count">—</strong>
+          </div>
+          <div>
+            <span data-t="source">元ファイルの照合</span
+            ><strong id="source-state">—</strong>
+          </div>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Workspace">
+          <button
+            id="tab-edit"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-edit"
+            data-t="editTab"
+          >
+            01 / 箇所をレビュー</button
+          ><button
+            id="tab-return"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="panel-return"
+            data-t="returnTab"
+          >
+            02 / 差分を返す</button
+          ><button
+            id="tab-scope"
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="panel-scope"
+            data-t="scopeTab"
+          >
+            03 / 対象外を確認
+          </button>
+        </div>
+        <section id="panel-edit" role="tabpanel" aria-labelledby="tab-edit">
+          <div class="empty" id="empty">
+            <span class="empty-icon" aria-hidden="true">[ ↗ ]</span>
+            <h3 data-t="emptyTitle">画像のある場所から、レビューを始める。</h3>
+            <p data-t="emptyBody">
+              DOCXを開くか、サンプル文書を試してください。ファイルはアップロードされず、このタブのメモリ内だけで処理します。
+            </p>
+            <small data-t="limits"
+              >DOCX 25 MiB / 展開合計100 MiB / 最大300箇所</small
+            >
+          </div>
+          <div class="editor-grid" id="editor" hidden>
+            <aside class="occurrence-rail">
+              <div class="rail-heading">
+                <strong data-t="occurrences">出現箇所</strong
+                ><small id="story-count"></small>
+              </div>
+              <div id="occurrence-list"></div>
+            </aside>
+            <article class="editor-body">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow" id="placement"></p>
+                  <h3 id="occurrence-title"></h3>
+                </div>
+                <span class="pill" id="record-state"></span>
+              </div>
+              <p class="context" id="context"></p>
+              <dl class="identity">
+                <div>
+                  <dt data-t="part">文書パーツ</dt>
+                  <dd id="part"></dd>
+                </div>
+                <div>
+                  <dt data-t="path">要素の位置</dt>
+                  <dd id="path"></dd>
+                </div>
+                <div>
+                  <dt data-t="reuse">参照・同じ画像</dt>
+                  <dd id="reuse"></dd>
+                </div>
+              </dl>
+              <div class="field">
+                <div class="field-head">
+                  <label for="descr-action" data-t="description"
+                    >説明 / descr</label
+                  ><select id="descr-action">
+                    <option value="keep" data-t="keep">元の値を保持</option>
+                    <option value="set" data-t="set">値を設定</option>
+                    <option value="remove" data-t="remove">属性を削除</option>
+                  </select>
+                </div>
+                <p class="original-label" data-t="original">元の値</p>
+                <pre id="descr-original"></pre>
+                <label for="descr-value" class="sr" data-t="newDescription"
+                  >新しい説明</label
+                ><textarea
+                  id="descr-value"
+                  rows="4"
+                  maxlength="4096"
+                  disabled
+                  spellcheck="true"
+                ></textarea
+                ><small id="descr-bytes"></small>
+              </div>
+              <div class="field">
+                <div class="field-head">
+                  <label for="title-action" data-t="title"
+                    >タイトル / title</label
+                  ><select id="title-action">
+                    <option value="keep" data-t="keep">元の値を保持</option>
+                    <option value="set" data-t="set">値を設定</option>
+                    <option value="remove" data-t="remove">属性を削除</option>
+                  </select>
+                </div>
+                <p class="original-label" data-t="original">元の値</p>
+                <pre id="title-original"></pre>
+                <label for="title-value" class="sr" data-t="newTitle"
+                  >新しいタイトル</label
+                ><textarea
+                  id="title-value"
+                  rows="2"
+                  maxlength="4096"
+                  disabled
+                ></textarea
+                ><small id="title-bytes"></small>
+              </div>
+              <p class="hint" data-t="emptyHint">
+                空文字の設定と属性の削除は別の操作です。本文・画像本体・他の属性は変更しません。
+              </p>
+              <button id="reset-record" data-t="reset">
+                この箇所を元に戻す
+              </button>
+            </article>
+          </div>
+        </section>
+        <section
+          id="panel-return"
+          role="tabpanel"
+          aria-labelledby="tab-return"
+          hidden
+        >
+          <div class="return-heading">
+            <div>
+              <p class="eyebrow">ROUND TRIP / EXACT FILE</p>
+              <h3 data-t="returnTitle">レビューを持ち出し、差分だけ戻す。</h3>
+              <p data-t="returnBody">
+                レビューJSONは並べ替え・一部の行だけの返却に対応。同じDOCXにだけ適用できます。省いた箇所は元のままです。
+              </p>
+            </div>
+            <div class="packet-actions">
+              <button id="export-packet" data-t="exportPacket" disabled>
+                レビューJSONを保存</button
+              ><button id="open-packet" data-t="openPacket" disabled>
+                レビューJSONを読み込む
+              </button>
+            </div>
+          </div>
+          <div id="diff-empty" class="empty compact" data-t="diffEmpty">
+            DOCXを開くと変更予定が表示されます。
+          </div>
+          <div class="table-scroll">
+            <table id="diff-table" hidden>
+              <thead>
+                <tr>
+                  <th data-t="occurrence">箇所</th>
+                  <th data-t="before">変更前</th>
+                  <th data-t="after">変更後</th>
+                </tr>
+              </thead>
+              <tbody id="diff-rows"></tbody>
+            </table>
+          </div>
+          <div class="export-block">
+            <div>
+              <p class="eyebrow" id="freshness">NO DOCUMENT</p>
+              <h3 data-t="buildTitle">確認した差分を文書へ</h3>
+              <p data-t="buildBody">
+                元ファイルを再照合し、出力を再び開いて検証します。編集を続けると前の出力は無効になります。
+              </p>
+            </div>
+            <button id="apply" class="primary" disabled data-t="apply">
+              DOCXを作成して検証
+            </button>
+          </div>
+          <div class="downloads">
+            <button id="download-docx" disabled>
+              <small>01 / DOCX</small
+              ><strong data-t="downloadDocx">更新した文書</strong></button
+            ><button id="download-receipt" disabled>
+              <small>02 / JSON</small
+              ><strong data-t="downloadReceipt">検証記録</strong></button
+            ><button id="download-report" disabled>
+              <small>03 / HTML</small
+              ><strong data-t="downloadReport">変更前後のレビュー</strong>
+            </button>
+          </div>
+        </section>
+        <section
+          id="panel-scope"
+          role="tabpanel"
+          aria-labelledby="tab-scope"
+          hidden
+        >
+          <h3 data-t="scopeHeading">対象外も、そのまま見える。</h3>
+          <p data-t="scopeBody">
+            対象外のオブジェクトは変更しません。本文と参照されるヘッダー・フッターを走査します。共有ヘッダーは、ページ数ではなく一つの保存箇所として扱います。
+          </p>
+          <div id="exclusion-list" class="exclusions"></div>
+          <div class="out-of-scope">
+            <h4 data-t="unsupportedTitle">今回の対象に含めないもの</h4>
+            <p data-t="unsupported">
+              変更履歴内の画像、VML、SmartArt、グラフ、グループ、外部画像、代替表現、装飾指定、説明を持つ競合キャリア。脚注・文末脚注・コメント・用語集と参照されないヘッダー等は走査対象外。厳密形式・署名・暗号化・マクロを含むパッケージは拒否します。
+            </p>
+          </div>
+        </section>
+      </section>
+      <section class="guide">
+        <p class="eyebrow">FIELD NOTES / HUMAN REVIEW</p>
+        <div class="guide-grid">
+          <article>
+            <span>01</span>
+            <h3 data-t="g1title">場所を識別する</h3>
+            <p data-t="g1">
+              同じ画像・同じ説明でも、別々の出現箇所です。画像ハッシュだけで結び付けません。
+            </p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3 data-t="g2title">意味を人が決める</h3>
+            <p data-t="g2">
+              画像の文脈に合う説明を入力します。説明の自動生成やOCR、適合判定は行いません。
+            </p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3 data-t="g3title">元の文書を固定する</h3>
+            <p data-t="g3">
+              Wordで保存し直しただけでもバイト列は変わり得ます。変わった文書には新しいレビューを作成します。
+            </p>
+          </article>
+        </div>
+      </section>
+      <footer>
+        <span class="brand">alt<span>slot</span></span>
+        <p data-t="footer">
+          セッション内のみ保存。タブを閉じる前にレビューJSONを保存してください。
+        </p>
+        <a
+          href="https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.drawing.wordprocessing.docproperties"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open XML docPr ↗</a
+        >
+      </footer>
+    </main>
+    <dialog id="packet-dialog">
+      <div class="section-heading">
+        <h2 data-t="packetTitle">レビューJSONを読み込む</h2>
+        <button id="close-packet" aria-label="閉じる / Close">×</button>
+      </div>
+      <p data-t="packetHint">
+        元ファイル・箇所・元属性・画像ハッシュを照合します。エラー時は現在のレビューを変更しません。
+      </p>
+      <label
+        ><span data-t="packetFile">JSONファイル</span
+        ><input
+          id="packet-file"
+          type="file"
+          accept=".json,application/json" /></label
+      ><label for="packet-json" data-t="pastePacket">またはJSONを貼り付け</label
+      ><textarea
+        id="packet-json"
+        rows="12"
+        maxlength="4194304"
+        spellcheck="false"
+      ></textarea>
+      <p id="packet-error" role="alert"></p>
+      <div class="toolbar">
+        <button id="import-packet" class="primary" data-t="importPacket">
+          照合して読み込む</button
+        ><button id="cancel-packet" data-t="cancel">中止</button>
+      </div>
+    </dialog>
+    <script type="module" src="./app.mjs"></script>
+  </body>
+</html>

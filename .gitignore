@@ -1,0 +1,9 @@
+node_modules/
+dist/
+tests/artifacts/
+tests/browser/artifacts/
+fixtures/render-*/
+__pycache__/
+*.pyc
+tests/openxml/bin/
+tests/openxml/obj/
