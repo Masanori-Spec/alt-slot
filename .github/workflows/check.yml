@@ -1,0 +1,98 @@
+name: Verify AltSlot
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  engine:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: npm ci --ignore-scripts
+      - run: npm run check
+      - run: node scripts/emit_example.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: altslot-engine-node${{ matrix.node }}
+          path: tests/artifacts/
+  browser:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: npm ci --ignore-scripts
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Sandboxed Chromium at nested deployment path
+        env:
+          BASE_PATH: /alt-slot/
+          BASE_URL: http://127.0.0.1:4173/alt-slot/
+        run: |
+          npm run serve > /tmp/altslot-server.log 2>&1 &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:4173/alt-slot/ > /dev/null && break; sleep 1; done
+          npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: altslot-browser-evidence
+          path: tests/browser/artifacts/
+  document:
+    needs: browser
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - uses: actions/download-artifact@v4
+        with:
+          name: altslot-browser-evidence
+          path: tests/browser/artifacts/
+      - run: node scripts/emit_example.mjs
+      - name: Open XML SDK independent validation
+        run: |
+          dotnet restore tests/openxml/AltSlot.OpenXml.csproj --configfile tests/openxml/NuGet.Config
+          dotnet build tests/openxml/AltSlot.OpenXml.csproj --no-restore
+          dotnet run --project tests/openxml/AltSlot.OpenXml.csproj --no-build -- fixtures/bench.docx tests/artifacts/reviewed.docx tests/browser/artifacts/reviewed.docx tests/browser/artifacts/noop.docx > tests/artifacts/openxml-validation.json
+      - name: Install official distribution renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libreoffice-writer poppler-utils
+      - run: python scripts/render_check.py
+      - run: python scripts/render_check.py --reviewed tests/browser/artifacts/reviewed.docx --label browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: altslot-document-evidence
+          path: tests/artifacts/
