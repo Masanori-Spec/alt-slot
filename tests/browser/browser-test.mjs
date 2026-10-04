@@ -70,20 +70,42 @@ async function importText(text) {
   await page.locator("#packet-json").fill(text);
   await page.locator("#import-packet").click();
 }
+async function assertSkipLink(revealed) {
+  const state = await page.locator(".skip").evaluate((node) => {
+    const style = getComputedStyle(node),
+      rect = node.getBoundingClientRect();
+    return {
+      focused: node === document.activeElement,
+      opacity: style.opacity,
+      clipPath: style.clipPath,
+      pointerEvents: style.pointerEvents,
+      inViewport: rect.top >= 0 && rect.bottom <= innerHeight,
+      focusable: node.tabIndex >= 0 && style.display !== "none" && style.visibility === "visible",
+    };
+  });
+  assert.equal(state.focusable, true);
+  assert.equal(state.focused, revealed);
+  assert.equal(state.opacity, revealed ? "1" : "0");
+  assert.equal(state.clipPath, revealed ? "none" : "inset(50%)");
+  assert.equal(state.pointerEvents, revealed ? "auto" : "none");
+  if (revealed) assert.equal(state.inViewport, true);
+}
 try {
   await scenario(
     "Japanese entry, keyboard navigation, English locale and local sample under subpath",
     async () => {
       await page.goto(base);
       assert.equal(await page.locator("html").getAttribute("lang"), "ja");
+      await assertSkipLink(false);
       await page.keyboard.press("Tab");
+      await assertSkipLink(true);
+      await page.screenshot({ path: dir + "/keyboard-skip-focused.png" });
+      await page.keyboard.press("Enter");
       assert.equal(
-        await page
-          .locator(".skip")
-          .evaluate((n) => n === document.activeElement),
+        await page.locator("#main").evaluate((node) => node === document.activeElement),
         true,
       );
-      await page.keyboard.press("Enter");
+      await assertSkipLink(false);
       await page.locator("#demo").click();
       await loaded();
       assert.equal(await page.locator("#occurrence-list button").count(), 5);
@@ -104,6 +126,8 @@ try {
         await page.locator("#tab-edit").getAttribute("aria-selected"),
         "true",
       );
+      await page.locator("#occurrence-list").scrollIntoViewIfNeeded();
+      await assertSkipLink(false);
       await page.screenshot({
         path: dir + "/desktop-edit-en.png",
         fullPage: true,
